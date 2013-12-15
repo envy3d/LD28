@@ -6,10 +6,12 @@ package com.envy3d.ld28.input;
 
 import com.badlogic.gdx.input.GestureDetector.GestureListener;
 import com.badlogic.gdx.math.Vector2;
+import com.envy3d.ld28.unit.Player;
 
 public class PlayerInput implements GestureListener {
 	
 	private InputReceiver receiver;
+	private Player player;
 	
 	public PlayerInput(InputReceiver receiver) {
 		this.receiver = receiver;
@@ -17,7 +19,7 @@ public class PlayerInput implements GestureListener {
 
 	@Override
 	public boolean touchDown(float x, float y, int pointer, int button) {
-		// TODO Auto-generated method stub
+		
 		return false;
 	}
 

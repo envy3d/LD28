@@ -4,15 +4,16 @@
 
 package com.envy3d.ld28.map;
 
-public class GrassTile extends Tile {
+public class CastleTile extends Tile {
 
-	public GrassTile(int x, int y) {
+	public CastleTile(int x, int y) {
 		super(x, y);
 		
 	}
 
 	@Override
 	public void onTile() {
+		
 		
 	}
 
@@ -21,5 +22,5 @@ public class GrassTile extends Tile {
 		
 		
 	}
-	
+
 }

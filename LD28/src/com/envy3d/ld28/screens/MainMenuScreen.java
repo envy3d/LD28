@@ -5,19 +5,19 @@
 package com.envy3d.ld28.screens;
 
 import com.badlogic.gdx.Screen;
-import com.envy3d.ld28.GameMaster;
 
-public class GameScreen implements Screen {
-	public GameMaster gameMaster;
-	
-	public GameScreen() {
+public class MainMenuScreen implements Screen {
+
+	@Override
+	public void render(float delta) {
+		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void render(float delta) {
-		// if player makes an action, calculations are performed.
-		// render
+	public void resize(int width, int height) {
+		// TODO Auto-generated method stub
+		
 	}
 
 	@Override
@@ -46,12 +46,6 @@ public class GameScreen implements Screen {
 
 	@Override
 	public void dispose() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void resize(int width, int height) {
 		// TODO Auto-generated method stub
 		
 	}

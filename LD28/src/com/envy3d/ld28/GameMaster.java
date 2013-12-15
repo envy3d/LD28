@@ -13,8 +13,6 @@ public class GameMaster implements InputReceiver {
 	private final int HOURS_IN_DAY = 24;
 	private final int DAYS_TO_SURVIVE = 21; // ???
 	
-	private int currentHour = 0;
-	private int currentDay = 0;
 	private Map map;
 
 	@Override
@@ -27,6 +25,11 @@ public class GameMaster implements InputReceiver {
 	public boolean selectLocation(int x, int y, int unitID) {
 		
 		return false;
+	}
+
+	@Override
+	public Tile queryTile(int x, int y) {
+		return map.getTile(x, y);
 	}
 
 }

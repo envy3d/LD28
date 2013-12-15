@@ -12,4 +12,5 @@ public interface InputReceiver {
 	public Tile queryTile(int x, int y);
 	public Array<Tile> queryNeighbors(int x, int y, int unitID);
 	public boolean selectLocation(int x, int y, int unitID);
+	
 }

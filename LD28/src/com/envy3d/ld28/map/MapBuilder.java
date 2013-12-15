@@ -30,7 +30,18 @@ public class MapBuilder {
 		}
 		switch (tileType) {
 			case "grass":
-				map[y][x] = new GrassTile();
+				map[y][x] = new GrassTile(x, y);
+				return true;
+			case "forest":
+				map[y][x] = new ForestTile(x, y);
+				return true;
+			case "mountain":
+				map[y][x] = new MountainTile(x, y);
+			case "castle":
+				map[y][x] = new CastleTile(x, y);
+				return true;
+			case "hovel":
+				map[y][x] = new HovelTile(x, y);
 				return true;
 				
 			default:
