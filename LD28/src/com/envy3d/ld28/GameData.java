@@ -14,6 +14,7 @@ public class GameData {
 	public static SpriteBatch spriteBatch;
 	public static AssetManager assetManager;
 	public static Game game;
+	public static GameCamera camera;
 	
 	public static boolean playAnimations = false;
 	

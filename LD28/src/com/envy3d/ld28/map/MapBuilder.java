@@ -5,6 +5,8 @@
 package com.envy3d.ld28.map;
 
 import com.badlogic.gdx.Gdx;
+import com.envy3d.ld28.PlayData;
+import com.envy3d.ld28.unit.*;
 
 public class MapBuilder {
 	private int height;
@@ -44,12 +46,15 @@ public class MapBuilder {
 				return true;
 			case "mountain":
 				map[y][x] = new MountainTile(x, y);
+				return true;
 			case "castle":
 				map[y][x] = new CastleTile(x, y);
-				
+				PlayData.castle = new Castle(x, y);
+				PlayData.player = new Player(x, y - 1);
 				return true;
 			case "hovel":
 				map[y][x] = new HovelTile(x, y);
+				PlayData.units.add(new Hovel(x, y));
 				return true;
 				
 			default:

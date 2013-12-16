@@ -8,7 +8,7 @@ public class GrassTile extends Tile {
 
 	public GrassTile(int x, int y) {
 		super(x, y);
-		
+		moveCost = 1;
 	}
 
 	@Override

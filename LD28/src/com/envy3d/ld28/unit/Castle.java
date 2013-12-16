@@ -10,6 +10,10 @@ import com.envy3d.ld28.PlayData;
 
 public class Castle extends Unit {
 
+	public Castle(int tileX, int tileY) {
+		super(tileX, tileY);
+	}
+
 	@Override
 	public void attack(int tileX, int tileY) {
 	}
@@ -38,5 +42,9 @@ public class Castle extends Unit {
 	@Override
 	public TextureRegion render(float delta) {
 		return null;
+	}
+
+	@Override
+	public void conquer(int tileX, int tileY) {
 	}
 }

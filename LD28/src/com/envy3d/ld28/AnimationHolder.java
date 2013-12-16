@@ -14,9 +14,10 @@ import com.badlogic.gdx.utils.ArrayMap;
 public class AnimationHolder {
 	public static ArrayMap<String, Animation> animations;
 	
-	public AnimationHolder(String[] spritesheetNames, AssetManager assets) {
+	public static void build(String[] spritesheetNames) {
 		Texture tempTex;
 		Array<TextureRegion> tempRegs = new Array<>(3);
+		AssetManager assets = GameData.assetManager;
 		
 		for (String name : spritesheetNames) {
 			tempTex = assets.get(name, Texture.class);

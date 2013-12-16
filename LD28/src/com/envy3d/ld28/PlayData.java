@@ -4,7 +4,6 @@
 
 package com.envy3d.ld28;
 
-import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.utils.Array;
 import com.envy3d.ld28.map.Map;
 import com.envy3d.ld28.unit.Castle;
@@ -15,14 +14,16 @@ public class PlayData {
 	public static boolean playerAlive = true;
 	public static boolean castleAlive = true;
 	
-	public static int currentHour = 0;
+	public static int currentHour = 23;
 	public static int currentDay = 0;
 	
 	public static Array<Unit> units;
 	public static Map map;
-	public static OrthographicCamera gameCamera;
 	public static Player player;
 	public static Castle castle;
+	
+	public static boolean isPlayerTurn = false;
+	public static boolean isAiTurn = false;
 	
 	public static void reset() {
 		playerAlive = true;
@@ -33,7 +34,6 @@ public class PlayData {
 		
 		units = null;
 		map = null;
-		gameCamera = null;
 		player = null;
 		castle = null;
 	}

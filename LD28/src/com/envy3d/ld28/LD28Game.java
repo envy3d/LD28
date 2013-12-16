@@ -9,14 +9,13 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.envy3d.ld28.screens.LoadingScreen;
 
 public class LD28Game extends Game {//implements ApplicationListener {
-	private OrthographicCamera camera;
 	
 	@Override
 	public void create() {		
-		camera = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		GameData.spriteBatch = new SpriteBatch();
 		GameData.assetManager = new AssetManager();
 		GameData.game = this;
+		GameData.camera = new GameCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		setScreen(new LoadingScreen());
 	}
 

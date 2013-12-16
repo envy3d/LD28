@@ -8,7 +8,7 @@ public class CastleTile extends Tile {
 
 	public CastleTile(int x, int y) {
 		super(x, y);
-		
+		moveCost = 10;
 	}
 
 	@Override

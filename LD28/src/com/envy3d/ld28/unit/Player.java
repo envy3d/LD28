@@ -4,20 +4,17 @@
 
 package com.envy3d.ld28.unit;
 
-import com.badlogic.gdx.assets.AssetManager;
-import com.badlogic.gdx.graphics.g2d.Animation;
 import com.envy3d.ld28.AnimationHolder;
 import com.envy3d.ld28.PlayData;
 
 public class Player extends Ambulator {
-	public Animation idling;
-	public Animation moving;
-	public Animation attacking;
 	
-	public Player(AssetManager assets) {
+	public Player(int tileX, int tileY) {
+		super(tileX, tileY);
 		animTime = 0;
-		idling = AnimationHolder.animations.get("knightIdle");
-		moving = AnimationHolder.animations.get("knightRun");
+		idling = AnimationHolder.animations.get("knightIdleLarge.png");
+		moving = AnimationHolder.animations.get("knightRunLarge.png");
+		attacking = AnimationHolder.animations.get("knightAttackLarge.png");
 		currentAnim = idling;
 		
 		attack = 3;
@@ -25,30 +22,11 @@ public class Player extends Ambulator {
 		move = 2;
 		ranged = false;
 	}
-
-	@Override
-	public void attack(int tileX, int tileY) {
-		
-	}
-	
-	@Override
-	public void move(int tileX, int tileY) {
-		
-	}
-
-	@Override
-	public void defend() {
-		
-	}
 	
 	@Override
 	public void die() {
+		super.die();
 		PlayData.playerAlive = false;
-	}
-
-	@Override
-	public void update(float delta) {
-		
 	}
 
 	@Override

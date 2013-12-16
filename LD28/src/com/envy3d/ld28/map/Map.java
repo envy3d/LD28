@@ -13,8 +13,11 @@ public class Map {
 	
 	public Map(Tile[][] tiles, int tileWidth, int tileHeight) {
 		this.tiles = tiles;
+		this.width = tiles[0].length;
+		this.height = tiles.length;
 		this.tileWidth = tileWidth;
 		this.tileHeight = tileHeight;
+		
 	}
 	
 	public Map(int width, int height, int tileWidth, int tileHeight) {

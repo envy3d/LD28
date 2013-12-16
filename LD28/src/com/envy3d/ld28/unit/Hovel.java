@@ -9,6 +9,10 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 public class Hovel extends Unit {
 
+	public Hovel(int tileX, int tileY) {
+		super(tileX, tileY);
+	}
+
 	@Override
 	public void attack(int tileX, int tileY) {
 	}
@@ -36,5 +40,9 @@ public class Hovel extends Unit {
 	@Override
 	public TextureRegion render(float delta) {
 		return null;
+	}
+
+	@Override
+	public void conquer(int tileX, int tileY) {
 	}
 }

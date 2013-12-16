@@ -16,9 +16,21 @@ public abstract class Unit {
 	public String name;
 	
 	protected int animTime;
-	protected Animation currentAnim;
+	public Animation currentAnim;
+	
+	public Unit(int tileX, int tileY) {
+		this.tileX = tileX;
+		this.tileY = tileY;
+	}
+	
+	public void setPixelPosition(int pixelsPerTileX, int pixelsPerTileY) {
+		x = tileX * pixelsPerTileX;
+		y = tileY * pixelsPerTileY;
+	}
 	
 	public abstract void attack(int tileX, int tileY);
+	
+	public abstract void conquer(int tileX, int tileY);
 	
 	public abstract void defend();
 	
@@ -33,11 +45,11 @@ public abstract class Unit {
 	public abstract void onAnimationFinished();
 	
 	public TextureRegion render(float delta) {
-		animTime += delta;
+		/*animTime += delta;
 		if (animTime > currentAnim.animationDuration) {
 			animTime -= currentAnim.animationDuration;
 			onAnimationFinished();
-		}
+		}*/
 		return currentAnim.getKeyFrame(animTime);
 	}
 	

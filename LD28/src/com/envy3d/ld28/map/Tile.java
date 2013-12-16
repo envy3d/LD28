@@ -4,11 +4,12 @@
 
 package com.envy3d.ld28.map;
 
-import com.badlogic.gdx.utils.ArrayMap;
-
 public abstract class Tile {
-	protected int x, y;
-	public ArrayMap<String, ? extends Number> stats;
+	public int x, y;
+	public int moveCost;
+	public float attackMod = 1;
+	public float defendMod = 1;
+	
 	
 	public abstract void onTile();
 	public abstract void enteringTile();

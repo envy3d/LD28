@@ -9,22 +9,13 @@ import com.badlogic.gdx.math.Vector3;
 
 public class GameCamera extends OrthographicCamera {
 	
-	public final float MAX_VELOCITY = 35.0f;
-	public final float ACCELERATION = 10.0f;
-	
 	public boolean stayInCameraBounds;
-	public boolean interpolatePosition;
 	public int leftBound, rightBound, bottomBound, topBound;
-	public float velocity;
-	public Vector3 destination;
 	public Vector3 realPosition;
 	
 	public GameCamera(int screenWidth, int screenHeight) {
 		super(screenWidth, screenHeight);
 		stayInCameraBounds = true;
-		interpolatePosition = true;
-		velocity = 0.0f;
-		destination = new Vector3();
 		realPosition = position.cpy();
 	}
 	
@@ -34,12 +25,7 @@ public class GameCamera extends OrthographicCamera {
 		this.update();
 	}
 	
-	public void setDestination(int x, int y) {
-		destination.x = x;
-		destination.y = y;
-	}
-	
-	private void stayInBounds() {
+	public void stayInBounds() {
 		if (realPosition.x - (viewportWidth * 0.5f) < 0) {
 			realPosition.x = (viewportWidth * 0.5f);
 		}

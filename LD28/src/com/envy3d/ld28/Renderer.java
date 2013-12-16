@@ -18,8 +18,8 @@ public class Renderer {
 	private OrthogonalTiledMapRenderer tileRenderer;
 	
 	public Renderer(TiledMap tiledMap) {
-		orthoCam = new GameCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-		orthoCam.position.set(Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight() /2, orthoCam.position.z);
+		orthoCam = GameData.camera;
+		//orthoCam.position.set(Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight() /2, orthoCam.position.z);
 		orthoCam.setCameraBounds(0, PlayData.map.getTileWidth() * PlayData.map.getWidth(),
 								 0, PlayData.map.getTileHeight() * PlayData.map.getHeight());
 		spriteBatch = GameData.spriteBatch;
@@ -31,18 +31,21 @@ public class Renderer {
 		Gdx.gl20.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		
 		spriteBatch.setProjectionMatrix(orthoCam.combined);
-		orthoCam.update();
+		orthoCam.realPosition.set(PlayData.player.tileX * PlayData.map.getTileWidth(), (PlayData.player.tileY * PlayData.map.getTileHeight()), orthoCam.position.z);
+		orthoCam.stayInBounds();
+		orthoCam.update(delta);
 		tileRenderer.setView(orthoCam);
 		
 		tileRenderer.render(renderLayers);
 		
 		spriteBatch.begin();
 		// Render sprites
-		/*
 		for (Unit unit : PlayData.units) {
-			spriteBatch.draw(unit.render(delta), unit.x, unit.y);
+			if (unit.currentAnim != null) {
+				spriteBatch.draw(unit.render(delta), unit.x, unit.y);
+			}
 		}
-		*/
+		spriteBatch.draw(PlayData.player.render(delta), PlayData.player.x, PlayData.player.y);
 		spriteBatch.end();
 	}
 }

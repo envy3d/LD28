@@ -8,7 +8,7 @@ public class HovelTile extends Tile {
 
 	public HovelTile(int x, int y) {
 		super(x, y);
-		
+		moveCost = 1;
 	}
 
 	@Override
