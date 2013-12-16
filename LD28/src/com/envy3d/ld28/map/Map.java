@@ -7,10 +7,21 @@ package com.envy3d.ld28.map;
 public class Map {
 	private int width;
 	private int height;
+	private int tileWidth;
+	private int tileHeight;
 	private Tile[][] tiles;
 	
-	public Map() {
-		
+	public Map(Tile[][] tiles, int tileWidth, int tileHeight) {
+		this.tiles = tiles;
+		this.tileWidth = tileWidth;
+		this.tileHeight = tileHeight;
+	}
+	
+	public Map(int width, int height, int tileWidth, int tileHeight) {
+		this.width = width;
+		this.height = height;
+		this.tileWidth = tileWidth;
+		this.tileHeight = tileHeight;
 	}
 	
 	public Tile getTile(int x, int y) {
@@ -26,5 +37,13 @@ public class Map {
 	
 	public int getHeight() { 
 		return height;
+	}
+	
+	public int getTileWidth() {
+		return tileWidth;
+	}
+	
+	public int getTileHeight() {
+		return tileHeight;
 	}
 }

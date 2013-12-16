@@ -16,9 +16,7 @@ public class TiledMapDataPrepper {
 	 */
 	public static void readTileProperties(TiledMap tiledMap, MapBuilder mapBuilder) {
 		TiledMapTileLayer tiles = (TiledMapTileLayer)tiledMap.getLayers().get(0);
-		if (mapBuilder == null) {
-			mapBuilder = new MapBuilder(tiles.getWidth(), tiles.getHeight());
-		}
+		mapBuilder.setDimensions(tiles.getWidth(), tiles.getHeight());
 		
 		for (int i = 0, m = tiles.getHeight(); i < m; ++i) {
 			for (int j = 0, n = tiles.getWidth(); j < n; ++j) {

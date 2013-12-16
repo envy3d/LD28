@@ -14,6 +14,14 @@ public class GameMaster implements InputReceiver {
 	private final int DAYS_TO_SURVIVE = 21; // ???
 	
 	private Map map;
+	
+	public GameMaster() {
+		map = PlayData.map;
+	}
+	
+	public void update(float delta) {
+		
+	}
 
 	@Override
 	public Array<Tile> queryNeighbors(int x, int y, int unitID) {

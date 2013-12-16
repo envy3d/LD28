@@ -11,15 +11,22 @@ public class MapBuilder {
 	private int width;
 	private Tile[][] map;
 	
+	public MapBuilder() {
+		
+	}
+	
 	public MapBuilder(int mapWidth, int mapHeight) {
-		width = mapWidth;
-		height = mapHeight;
+		setDimensions(mapWidth, mapHeight);
+	}
+	
+	public void setDimensions(int width, int height) {
+		this.width = width;
+		this.height = height;
 		
-		map = new Tile[mapHeight][];
+		map = new Tile[height][];
 		
-		final int height = mapHeight;
 		for (int i = 0; i < height; ++i) {
-			map[i] = new Tile[mapWidth];
+			map[i] = new Tile[width];
 		}
 	}
 	
@@ -39,6 +46,7 @@ public class MapBuilder {
 				map[y][x] = new MountainTile(x, y);
 			case "castle":
 				map[y][x] = new CastleTile(x, y);
+				
 				return true;
 			case "hovel":
 				map[y][x] = new HovelTile(x, y);
