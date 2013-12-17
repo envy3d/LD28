@@ -11,14 +11,12 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Texture;
 import com.envy3d.ld28.GameData;
 
-public class MainMenuScreen implements Screen, InputProcessor {
-
+public class LoseScreen implements Screen, InputProcessor {
+	
 	public Texture img;
 	
-	public MainMenuScreen() {
-		GameData.assetManager.load("MainMenu.png", Texture.class);
-		GameData.assetManager.finishLoading();
-		img = GameData.assetManager.get("MainMenu.png");
+	public LoseScreen() {
+		img = GameData.assetManager.get("loseScreen.png", Texture.class);
 	}
 	
 	@Override
@@ -29,43 +27,30 @@ public class MainMenuScreen implements Screen, InputProcessor {
 		GameData.spriteBatch.begin();
 		GameData.spriteBatch.draw(img, 0, 0);
 		GameData.spriteBatch.end();
-		
 	}
 
 	@Override
 	public void resize(int width, int height) {
-		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
 	public void show() {
-		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
 	public void hide() {
-		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
 	public void pause() {
-		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
 	public void resume() {
-		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
 	public void dispose() {
-		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
@@ -76,7 +61,9 @@ public class MainMenuScreen implements Screen, InputProcessor {
 	@Override
 	public boolean keyUp(int keycode) {
 		if (keycode == Input.Keys.ENTER) {
-			GameData.game.setScreen(new LoadingScreen());
+			MainMenuScreen screen = new MainMenuScreen();
+			Gdx.input.setInputProcessor(screen);
+			GameData.game.setScreen(screen);
 			return true;
 		}
 		return false;

@@ -4,13 +4,18 @@
 
 package com.envy3d.ld28.unit;
 
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.envy3d.ld28.AnimationHolder;
+import com.envy3d.ld28.GameData;
 
 
 public class Hovel extends Unit {
+	public boolean alive = true;
 
 	public Hovel(int tileX, int tileY) {
 		super(tileX, tileY);
+		hp = 10;
 	}
 
 	@Override
@@ -23,6 +28,10 @@ public class Hovel extends Unit {
 
 	@Override
 	public void die() {
+		alive = false;
+		int a = x;
+		int b = y;
+		currentAnim = AnimationHolder.animations.get("grass.png");
 	}
 	
 	@Override

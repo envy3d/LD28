@@ -7,6 +7,7 @@ import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.envy3d.ld28.screens.LoadingScreen;
+import com.envy3d.ld28.screens.MainMenuScreen;
 
 public class LD28Game extends Game {//implements ApplicationListener {
 	
@@ -16,7 +17,9 @@ public class LD28Game extends Game {//implements ApplicationListener {
 		GameData.assetManager = new AssetManager();
 		GameData.game = this;
 		GameData.camera = new GameCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-		setScreen(new LoadingScreen());
+		MainMenuScreen screen = new MainMenuScreen();
+		Gdx.input.setInputProcessor(screen);
+		setScreen(screen);
 	}
 
 	@Override

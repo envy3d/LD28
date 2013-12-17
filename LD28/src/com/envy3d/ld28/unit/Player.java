@@ -16,7 +16,7 @@ public class Player extends Ambulator {
 		moving = AnimationHolder.animations.get("knightRunLarge.png");
 		attacking = AnimationHolder.animations.get("knightAttackLarge.png");
 		currentAnim = idling;
-		
+		hp = 1;
 		attack = 3;
 		defense = 3;
 		move = 2;

@@ -14,6 +14,8 @@ public class Goblin extends Ambulator {
 		moving = AnimationHolder.animations.get("goblinRun.png");
 		attacking = AnimationHolder.animations.get("goblinAttack.png");
 		currentAnim = idling;
+		attack = 1;
+		defense = 0;
 	}
 
 	@Override

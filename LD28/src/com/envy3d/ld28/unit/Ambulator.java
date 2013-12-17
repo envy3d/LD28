@@ -36,6 +36,8 @@ public class Ambulator extends Unit {
 	
 	@Override
 	public void conquer(int tileX, int tileY) {
+		this.tileX = tileX;
+		this.tileY = tileY;
 		isConquering = true;
 		actionTimer = 0;
 		pixelDestination.set(tileX * PlayData.map.getTileWidth(), tileY * PlayData.map.getTileHeight());
@@ -83,22 +85,20 @@ public class Ambulator extends Unit {
 			}
 		}
 		else if (isConquering) {
-			if (isAttacking) {
-				if (actionTimer == 0) {
-					currentAnim = attacking;
-					x = (int) ((x + pixelDestination.x) / 2);
-					y = (int) ((y + pixelDestination.y) / 2);
-				}
-				else if (actionTimer < ACTION_TIMER_TARGET) {
-					
-				}
-				else {
-					actionTimer = 0;
-					currentAnim = idling;
-					isConquering = false;
-					x = (int) pixelDestination.x;
-					y = (int) pixelDestination.y;
-				}
+			if (actionTimer == 0) {
+				currentAnim = attacking;
+				x = (int) ((x + pixelDestination.x) / 2);
+				y = (int) ((y + pixelDestination.y) / 2);
+			}
+			else if (actionTimer < ACTION_TIMER_TARGET) {
+				
+			}
+			else {
+				actionTimer = 0;
+				currentAnim = idling;
+				isConquering = false;
+				x = (int) pixelDestination.x;
+				y = (int) pixelDestination.y;
 			}
 		}
 		else if (isMoving) {

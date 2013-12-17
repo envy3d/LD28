@@ -4,7 +4,9 @@
 
 package com.envy3d.ld28.screens;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.envy3d.ld28.GameData;
 import com.envy3d.ld28.GameMaster;
 import com.envy3d.ld28.PlayData;
 import com.envy3d.ld28.Renderer;
@@ -29,6 +31,17 @@ public class GameScreen implements Screen {
 		// render
 		
 		renderer.render(delta);
+		
+		if (PlayData.castleAlive == false || PlayData.castleAlive == false) {
+			LoseScreen screen = new LoseScreen();
+			Gdx.input.setInputProcessor(screen);
+			GameData.game.setScreen(screen);
+		}
+		else if (PlayData.currentDay == 8) {
+			WinScreen screen = new WinScreen();
+			Gdx.input.setInputProcessor(screen);
+			GameData.game.setScreen(screen);
+		}
 	}
 
 	@Override

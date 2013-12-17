@@ -12,6 +12,7 @@ public class Castle extends Unit {
 
 	public Castle(int tileX, int tileY) {
 		super(tileX, tileY);
+		hp = 20;
 	}
 
 	@Override

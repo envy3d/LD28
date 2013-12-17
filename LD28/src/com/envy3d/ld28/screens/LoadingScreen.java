@@ -41,7 +41,7 @@ public class LoadingScreen implements Screen {
 		if (assets.update()) {
 			AnimationHolder.animations = new ArrayMap<String, Animation>();
 			AnimationHolder.build(new String[] { "knightIdleLarge.png", "knightRunLarge.png", "knightAttackLarge.png",
-												 "goblinIdle.png", "goblinRun.png", "goblinAttack.png"});
+												 "goblinIdle.png", "goblinRun.png", "goblinAttack.png", "grass.png" });
 			
 			TiledMap tiledMap = assets.get(mapName, TiledMap.class);
 			MapBuilder mapBuilder = new MapBuilder();
@@ -76,7 +76,8 @@ public class LoadingScreen implements Screen {
 		assets.load("goblinIdle.png", Texture.class);
 		assets.load("goblinRun.png", Texture.class);
 		assets.load("goblinAttack.png", Texture.class);
-		PlayData.units = new Array<Unit>();
+		assets.load("grass.png", Texture.class);
+		PlayData.units = new Array<Unit>(true, 10, Unit.class);
 	}
 
 	@Override

@@ -8,6 +8,7 @@ import com.badlogic.gdx.utils.Array;
 import com.envy3d.ld28.input.InputReceiver;
 import com.envy3d.ld28.map.Map;
 import com.envy3d.ld28.map.Tile;
+import com.envy3d.ld28.unit.Ambulator;
 import com.envy3d.ld28.unit.Castle;
 import com.envy3d.ld28.unit.Goblin;
 import com.envy3d.ld28.unit.Hovel;
@@ -19,13 +20,21 @@ public class GameMaster implements InputReceiver {
 	private final int DAYS_TO_SURVIVE = 21; // ???
 	
 	private Map map;
+	private Ai ai;
+	private float timer;
+	private final float TIMER_TARGET = 1.0f;
 	
 	public GameMaster() {
 		map = PlayData.map;
+		ai = new Ai(this);
+		timer = 0;
 	}
 	
 	public void update(float delta) {
-		if (!PlayData.isAiTurn && !PlayData.isPlayerTurn) {
+		if (timer > TIMER_TARGET) {
+			timer = 0;
+		}
+		if (!PlayData.isAiTurn && !PlayData.isPlayerTurn && timer == 0) {
 			PlayData.currentHour += 1;
 			if (PlayData.currentHour == 24) {
 				PlayData.currentHour = 0;
@@ -40,8 +49,9 @@ public class GameMaster implements InputReceiver {
 			}
 			PlayData.isPlayerTurn = true;
 		}
-		else if (PlayData.isAiTurn) {
+		else if (PlayData.isAiTurn && timer == 0) {
 			// run AI
+			ai.update();
 			PlayData.isAiTurn = false;
 		}
 		
@@ -49,6 +59,7 @@ public class GameMaster implements InputReceiver {
 			u.update(delta);
 		}
 		PlayData.player.update(delta);
+		timer += delta;
 	}
 
 	@Override
@@ -59,6 +70,7 @@ public class GameMaster implements InputReceiver {
 
 	@Override
 	public boolean selectLocation(int x, int y, Unit unit) {
+		timer = 0.0001f;
 		Unit unitInDestTile = null;
 		for (Unit u : PlayData.units) {
 			if (u.tileX == x && u.tileY == y) {
@@ -73,9 +85,23 @@ public class GameMaster implements InputReceiver {
 				if (unitInDestTile instanceof Goblin) {
 					return false;
 				}
+				else if (unitInDestTile instanceof Hovel) {
+					return false;
+				}
 				else {
-					unit.attack(x, y);
-					unitInDestTile.defend();
+					if (unitInDestTile.hp < ((Ambulator)unit).attack) {
+						unit.conquer(x, y);
+						unitInDestTile.defend();
+						unitInDestTile.die();
+					}
+					else {
+						unit.attack(x, y);
+						unitInDestTile.defend();
+					}
+					unitInDestTile.hp -= ((Ambulator)unit).attack;
+					if (unitInDestTile instanceof Player) {
+						unit.hp -= ((Player)unitInDestTile).defense;
+					}
 					return true;
 				}
 			}
@@ -83,13 +109,20 @@ public class GameMaster implements InputReceiver {
 				if (unitInDestTile instanceof Castle) {
 					return false;
 				}
-				else if(unitInDestTile instanceof Hovel) {
-					unit.attack(x, y);
-					return true;
-				}
-				else if (unitInDestTile instanceof Goblin) {
-					unit.attack(x, y);
-					unitInDestTile.defend();
+				else {
+					if (unitInDestTile.hp < ((Ambulator)unit).attack) {
+						unit.conquer(x, y);
+						unitInDestTile.defend();
+						unitInDestTile.die();
+					}
+					else {
+						unit.attack(x, y);
+						unitInDestTile.defend();
+					}
+					unitInDestTile.hp -= ((Ambulator)unit).attack;
+					if (unitInDestTile instanceof Goblin) {
+						unit.hp -= ((Goblin)unitInDestTile).defense;
+					}
 					return true;
 				}
 			}
